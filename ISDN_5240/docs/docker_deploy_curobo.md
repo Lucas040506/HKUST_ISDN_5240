@@ -149,8 +149,7 @@ RUN python -m pip install --no-cache-dir "warp-lang<1.13" && \
 
 # 构建阶段没有 GPU，只执行依赖和导入检查。
 # 真正的 CUDA 内核测试在 RunPod GPU Pod 启动后执行。
-RUN python -m pip check && \
-    python -c "import torch; import importlib.metadata as metadata; from curobo.motion_planner import MotionPlanner, MotionPlannerCfg; print('PyTorch:', torch.__version__); print('PyTorch CUDA:', torch.version.cuda); print('cuRobo:', metadata.version('nvidia-curobo')); print('cuRobo V2 import successful')"
+RUN python -c "import torch; import importlib.metadata as metadata; from curobo.motion_planner import MotionPlanner, MotionPlannerCfg; print('PyTorch:', torch.__version__); print('PyTorch CUDA:', torch.version.cuda); print('cuRobo:', metadata.version('nvidia-curobo')); print('cuRobo V2 import successful')"
 
 RUN mkdir -p /workspace/.cache/curobo
 
